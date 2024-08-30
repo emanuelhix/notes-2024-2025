@@ -127,13 +127,13 @@ Here's a brief review of each component:
 
 ### Formal Definition of Computation
 
-Let \( M = \) the 5-tuple definition of a FSM.  
+Let \( M = (Q, \Sigma, \delta, q_0, A) \) be the 5-tuple definition of a finite state machine (FSM).  
 Let \( w = w_1w_2 \ldots w_n \) be a string (word) where each \( w_i \) is a member of the alphabet \( \Sigma \).  
 \( M \) accepts \( w \) if there is a sequence of states \( r_0, r_1, \ldots, r_n \) in \( Q \) that satisfies these three conditions:
 
 1. \( r_0 = q_0 \) (The machine starts in the start state)
-2. \( \text{\( \delta \)}(r_i, w_{i+1}) = r_{i+1} \) for \( i = 0, \ldots, n-1 \) (The machine transitions according to the transition function)
-3. \( r_n \in F \) (The final state \( r_n \) is an accept state, so we accept the string)
+2. \( \delta(r_i, w_{i+1}) = r_{i+1} \) for \( i = 0, \ldots, n-1 \) (The machine transitions according to the transition function)
+3. \( r_n \in A \) (The final state \( r_n \) is an accept state, so we accept the string)
 
 ---
 
