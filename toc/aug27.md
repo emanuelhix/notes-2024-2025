@@ -101,6 +101,7 @@ Here's a brief review of each component:
 - **Accept States (F)**: These are the states where, if the automaton ends up after processing the input string, the string is considered accepted by the automaton.
 
 **Cartesian Product of Sets**: In the context of the transition function \( \delta \), the Cartesian product \( Q \times \Sigma \) represents all possible pairs of states and input symbols. The transition function \( \delta \) takes each pair and assigns a new state.
+
 ---
 
 ### Language
