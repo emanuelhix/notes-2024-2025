@@ -1,63 +1,79 @@
 # Chapter 1 Notes
 
 ## Notable Questions
-  
-### 1.3.5: High Level Programming Languages
-5. An advantage of a high-level language is that a program <is independent of a particular machine>.
-High-level languages are machine independent, but they still have to be converted to a machine dependent (maybe hardware dependent is more accurate) language in order to utilize the hardware in a particular system.
 
-### 
+### 1.3.5: High-Level Programming Languages
+5. **Advantage of High-Level Languages:**  
+   High-level languages are machine-independent, meaning programs written in them are not tied to a specific machine. However, they must be translated into machine-dependent languages to interact with hardware.
 
 ## Notes
+
 ### The Big Picture
-Every piece of hardware of every computer, past or present, can be placed into one of these categories:
-1. Input
-writes data to memory
-2. Output
-displays result of computation to user
-3. Memory
-the place where instructions and data are retrieved from
-3. Datapath
-the place where computations happen
-4. Control
-sends signals that tell the other components how to operate
+Computer hardware can be categorized into:
 
-typically, control and datapth are included together as the "processor".
+1. **Input:**  
+   Devices that write data to memory.
 
-### the 7 Great Ideas of Computer Science
-1. Use abstraction to simplify design
-use abstractions to represent the design at different levels; low level details are inaccessible except through things like function calls, which gives a simpler model to work with in higher level code.
-2. Make the common case fast
-making the common case more quick usually results in a greater improval of performance than optimizing the rare cases.
-3. performance via parallelism
-splitting a task into subtasks that are completed simultaneously, so that the overall execution time is fractioned.
-4. performance via pipelining
-multiple operations are moved through different hardware units. these hardware are specialized for that type of operation, sometimes. 
-5. peformance via prediction
-ues data to look ahead and make predictions. of course, if the prediction is wrong, we need to gracefully handle those cases.
-6. hierarchy of memories
-the pyramid of different memory hardware. it describes hardware in 3 dimensions: speed, size, and manufacture cost. at the top of the pyramid, memory is the fastest, smallest, and most expensive. at the bottom of the pyramid, memory is the slowest, cheapest, and largest. 
-7. dependability via redundancy
-design the system in such a way that if one part fails, the system can fallback on another to do the same task. 
-this is a type of gracefully failing.
+2. **Output:**  
+   Devices that display computation results to the user.
 
-interestingly, this really says a lot about what we strive for when improving computers. 
-we care about performance, so we prescribe three solutions: parallelism, prediction, and pipelining.
-then, we instruct people to focus on optimizing common cases mainly, instead of edge cases. this is because our improvements will be most seen in those common cases than anywhere else. 
-if common cases make up a set of larger cases in part with the rare ones, then we're better off approaching the larger group as that one has a much higher performance improvement potential.
-we care in another dimension, too: dependency/reliability. we prescribe redundancy as a good solution for that. abstractly, this should really be about graceful failure.
-finally, we care that the systems we design can work easily with eachother. we prescribe abstraction as the solution.
+3. **Memory:**  
+   Storage for instructions and data.
+
+4. **Datapath:**  
+   Hardware where computations occur.
+
+5. **Control:**  
+   Sends signals to direct other components.
+
+   *Control* and *Datapath* are often combined as the "Processor."
+
+### The 7 Great Ideas of Computer Science
+
+1. **Abstraction:**  
+   Simplify design by using abstraction at different levels, hiding low-level details behind higher-level constructs.
+
+2. **Optimize Common Cases:**  
+   Focus on making the common cases fast, as this yields better overall performance than optimizing rare cases.
+
+3. **Parallelism:**  
+   Improve performance by splitting tasks into subtasks that run simultaneously.
+
+4. **Pipelining:**  
+   Enhance performance by overlapping multiple operations in specialized hardware units.
+
+5. **Prediction:**  
+   Use data to anticipate future events and handle incorrect predictions gracefully.
+
+6. **Memory Hierarchy:**  
+   Organize memory by speed, size, and cost. Faster, smaller, and more expensive memories are at the top, while slower, larger, and cheaper ones are at the bottom.
+
+7. **Redundancy:**  
+   Design systems with backup components to ensure graceful failure in case of part failure.
+
+   These principles focus on performance (parallelism, prediction, pipelining), reliability (redundancy), and ease of use (abstraction).
+
+#### These principles highlight our goals in computer improvement:
+
+1. **Performance Optimization:**  
+   We focus on three key strategies—parallelism, prediction, and pipelining—to enhance performance. The emphasis is on optimizing common cases rather than rare ones, as improvements in common scenarios yield the most significant performance gains. By addressing common cases effectively, we achieve higher overall performance benefits.
+
+2. **Reliability:**  
+   To address dependency and reliability, we use redundancy to ensure graceful failure. This approach allows systems to continue functioning even if a component fails, enhancing overall dependability.
+
+3. **System Integration:**  
+   We aim for systems that work seamlessly together, which is achieved through abstraction. This ensures that complex systems can be managed and interacted with more easily, facilitating smoother integration and operation.
 
 ## Hardware
-#### DRAM
-Large memory where most data is stored. Very dense. 
-#### SRAM
-Static RAM is less dense than DRAM, but provides faster access times.
-  
+
+- **DRAM (Dynamic Random Access Memory):**  
+  Large, dense memory used for most data storage.
+
+- **SRAM (Static Random Access Memory):**  
+  Faster but less dense than DRAM.
+
 ### Application Binary Interface (ABI)  
-The user porti  on of the instruction set plus the operating system interfaces used by application programmers. This provides a standard for binary portability across computers.   
-  
-### Instruction Set Architecture  
-an abstract interface between the hardwaere and the lowest-level software (i.e. the operating system programs) that contains all the information needed to write a machine language program that functions correctly; including instructions, registers, memory access, input/output, and more.  
-  
-ISAs allow machine language programs to be hardware  implementation independent.  
+Defines the interface between the instruction set and the operating system, ensuring binary portability across different computers.
+
+### Instruction Set Architecture (ISA)  
+An abstract interface between hardware and low-level software (e.g., operating systems). It includes instructions, registers, memory access, and I/O details, making machine language programs independent of hardware implementations.

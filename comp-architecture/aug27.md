@@ -111,12 +111,13 @@ Given:
      - Performance_B = \(\frac{3.33 \times 10^9}{\text{Number of Instructions}}\)
 
 3. **Compare the Performance:**
-   - **Speedup** = \(\frac{\text{Performance_A}}{\text{Performance_B}}\)
+   - **Speedup** = \(\frac{\text{Performance}_A}{\text{Performance}_B}\)
    - Speedup = \(\frac{4 \times 10^9}{3.33 \times 10^9}\)
-   - Speedup ≈ 1.2X
+   - Speedup \(\approx 1.2X\)
 
 **Conclusion:** Computer A is approximately 1.2 times faster than Computer B.
----
+
+\---
 ---
 ### Calculating the Average CPI
 
@@ -211,6 +212,7 @@ So, with \( p = 0.1887 \) and \( S_p = 5 \), the overall speedup is approximatel
 3. **Machine Code** (multiple object files) → **Linker** → **Executable Program or Library**
 
 This process involves translating and combining code from human-readable formats to machine-readable formats, ultimately resulting in executable programs or libraries.
+
 ---
 ---
 ### instruction set architecture (ISA)
