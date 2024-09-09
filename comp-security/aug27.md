@@ -1,4 +1,8 @@
 ---
+title: ""
+author: "parker hix"
+date: "2024-09-05"
+---
 
 ## Topic 2: Introduction to Cryptography
 - **Side-Channel Attack**:
