@@ -1,6 +1,8 @@
 ---
 
-# Stored-Program Concept
+# Chapter 2
+
+## Store Program Concept
 
 The stored-program concept refers to the idea that instructions and data of many types can be stored in memory as numbers. The interpretation of these numbers helps differentiate between an instruction and actual data.
 
@@ -51,11 +53,6 @@ Consider the assignment: `t = (g + h) - (i + j)`
    ```
    sub f, t0, t1
    ```
-
-## Question Notes
-
-- **Registers vs. Memory Locations**
-  - Registers are fast, limited data storage locations. MIPS has over 4 billion memory locations.
 
 ## Misc Notes
 
@@ -192,6 +189,10 @@ Logical operations simplify bit-level manipulation:
 9. **What is a use case for bit masking?**
    - To isolate a specific field in a word.
 
+10. What is the difference between registers and memory?
+    In this context, registers prefer to the temporary memory of the CPU.
+    Memory itself is an abstract term. It could refer to caches, disks, etc.
+
 ## Miscellaneous
 
-- **Add and Sub Opcodes**: The first field is 0; the last field determines whether it is addition or subtraction. This is due to their similar implementation with two source registers and one result register.
+- **Add and Sub Opcodes**: The first field is 0; the last field determines whether it is addition or subtraction. This is due to their similar implementation with two source registers and one result register. This follows design principle 2.
