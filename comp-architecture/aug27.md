@@ -81,7 +81,7 @@ The yield \( Y \) is calculated using the empirical formula:
    - **Formula:** \( 0.952 \times 314 \)
    - **Calculation:** \( 299.088 \)
 
-   **Therefore, the number of good dies per wafer is approximately 299.**
+   Therefore, the number of good dies per wafer is approximately **299**.
 ---
 ---
 ### Comparing the Performance of Two Computers
@@ -117,7 +117,11 @@ Given:
 
 **Conclusion:** Computer A is approximately 1.2 times faster than Computer B.
 
+<<<<<<< HEAD
+---
+=======
 \---
+>>>>>>> main
 ---
 ### Calculating the Average CPI
 
