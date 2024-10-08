@@ -117,11 +117,7 @@ Given:
 
 **Conclusion:** Computer A is approximately 1.2 times faster than Computer B.
 
-<<<<<<< HEAD
 ---
-=======
-\---
->>>>>>> main
 ---
 ### Calculating the Average CPI
 

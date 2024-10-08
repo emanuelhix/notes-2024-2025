@@ -1,0 +1,15 @@
+modern hash functions
+	md5
+	broken, collisions were published in aug 2004
+	has weaknesses that have been exposed in previous iterations md2, md5
+	apparently, even in 2019, 25% of modern content management systems still use md5 LOL!!!!
+sha (secure hash algo)
+	- we also found weaknesses for this one
+	- this is applicable to Lab 2
+sha-1
+	-cracked in 2017
+	-basically sucks lmao
+
+## some info about modern hash functions
+### md5
+	
