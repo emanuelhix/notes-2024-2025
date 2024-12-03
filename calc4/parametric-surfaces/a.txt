@@ -1,0 +1,196 @@
+// Initialize Program
+ORG 100
+
+// Read and Convert first Character from ASCII to Hexadecimal
+// -----------------------------------------------------------
+READ1, SKI         // Skip if input is available
+BUN READ1          // Wait until input is available
+CLE
+CLA
+INP                // Read character into AC
+STA C              // Store original input temporarily
+STA HEX_CASE_ARG
+STA DIG_CASE_ARG
+ADD CONST_NEG65    // Subtract ASCII value of 'A' (65 in decimal)
+SNA                // Skip next instruction if AC is negative (input < 'A')
+BSA HEX_CASE       // Branch to HEX_CASE for A-F
+BSA DIGIT_CASE     // Branch to DIGIT_CASE for 0-9
+LDA DIG_RESULT
+LDA HEX_RESULT         // Load result from RESULT
+STA MSB1           // Save result to MSB1
+
+// Read and Convert Second Character from ASCII to Hexadecimal
+// -----------------------------------------------------------
+READ2, SKI
+BUN READ2
+CLE
+CLA
+INP
+STA C
+STA HEX_CASE_ARG
+STA DIG_CASE_ARG
+ADD CONST_NEG65
+SNA
+BSA HEX_CASE
+BSA DIGIT_CASE
+LDA DIG_RESULT
+LDA HEX_RESULT         // Load result from RESULT
+STA LSB1           // Save result to LSB1
+
+// Read and Convert Third Character from ASCII to Hexadecimal
+// -----------------------------------------------------------
+READ3, SKI
+BUN READ3
+CLE
+CLA
+INP
+STA C
+STA HEX_CASE_ARG
+STA DIG_CASE_ARG
+ADD CONST_NEG65
+SNA
+BSA HEX_CASE
+BSA DIGIT_CASE
+LDA DIG_RESULT
+LDA HEX_RESULT         // Load result from RESULT
+STA MSB2           // Save result to MSB2
+
+// Read and Convert Fourth Character from ASCII to Hexadecimal
+// -----------------------------------------------------------
+READ4, SKI
+BUN READ4
+CLE
+CLA
+INP
+STA C
+STA HEX_CASE_ARG
+STA DIG_CASE_ARG
+ADD CONST_NEG65
+SNA
+BSA HEX_CASE
+BSA DIGIT_CASE
+LDA DIG_RESULT
+LDA HEX_RESULT         // Load result from RESULT
+STA LSB2           // Save result to LSB2
+
+// Combine and Convert First Hexadecimal Pair to Decimal
+// -----------------------------------------------------
+CLA
+LDA LSB1
+ADD MSB1
+ADD MSB1
+ADD MSB1
+ADD MSB1
+ADD MSB1
+ADD MSB1
+ADD MSB1
+ADD MSB1
+ADD MSB1
+ADD MSB1
+ADD MSB1
+ADD MSB1
+ADD MSB1
+ADD MSB1
+ADD MSB1
+ADD MSB1
+STA DEC1
+
+// Output First Decimal Result
+LDA DEC1
+
+// Combine and Convert Second Hexadecimal Pair to Decimal
+// ------------------------------------------------------
+CLA
+LDA LSB2
+ADD MSB2
+ADD MSB2
+ADD MSB2
+ADD MSB2
+ADD MSB2
+ADD MSB2
+ADD MSB2
+ADD MSB2
+ADD MSB2
+ADD MSB2
+ADD MSB2
+ADD MSB2
+ADD MSB2
+ADD MSB2
+ADD MSB2
+ADD MSB2
+STA DEC2
+
+// Output Second Decimal Result
+LDA DEC2
+
+// Check if DEC1 equals 255 and output T
+CHECK_DEC1, DEC 0
+LDA DEC1
+ADD CONST_NEG255    // Subtract 255 fTTTrom DEC1
+SZA                 // Skip next instruction if AC is zero
+BUN CHECK_DEC2      // Jump to check DEC2 if not zero
+LDA CONST_T         // Load ASCII value of 'T'
+OUT                 // Output 'T'
+HLT 
+
+// Check if DEC2 equals 255 and output T
+CHECK_DEC2, DEC 0
+LDA DEC2
+ADD CONST_NEG255    // Subtract 255 from DEC2
+SZA
+BUN CHECK_ADDITION
+LDA CONST_T         // Load ASCII value of 'T'
+OUT                 // Output 'T'
+HLT 
+
+// Check if the SUM of DEC1 and DEC2 equals 255 and output T
+CHECK_ADDITION, DEC 0
+LDA DEC2
+ADD DEC1
+STA SUM
+LDA SUM
+ADD CONST_NEG255
+SZA CHECK_COMP
+LDA CONST_T         // Load ASCII value of 'T'
+OUT                 // Output 'T'
+HLT
+
+// DIGIT_CASE Function: Convert Digit 0-9
+// --------------------------------------
+DIGIT_CASE, DEC 0
+CLA
+LDA DIG_CASE_ARG           // Reload original input
+ADD COND         // Adjust ASCII value to Hexadecimal for digits
+STA DIG_RESULT       // Store result in RESULT
+BUN DIGIT_CASE I // Return to caller
+
+// HEX_CASE Function: Convert Letter A-F
+// -------------------------------------
+HEX_CASE, DEC 0
+CLE
+CLA
+LDA HEX_CASE_ARG // Reload original input
+ADD CONL         // Adjust ASCII value to Hexadecimal for letters
+STA HEX_RESULT       // Store result in RESULT
+BUN HEX_CASE I
+ 
+// Define Constants and Variables
+C, DEC 0          // Temporary storage for the current character
+MSB1, DEC 0       // Most significant byte of the first pair
+LSB1, DEC 0       // Least significant byte of the first pair
+MSB2, DEC 0       // Most significant byte of the second pair
+LSB2, DEC 0       // Least significant byte of the second pair
+DEC1, DEC 0       // Decimal result of the first pair
+DEC2, DEC 0       // Decimal result of the second pair
+DIG_RESULT, DEC 0
+HEX_RESULT, DEC 0     // Temporary storage for processed result
+CONL, DEC -55     // Conversion factor for A-F
+COND, DEC -48     // Conversion factor for 0-9
+CONST_NEG65, DEC -65  // Constant for subtracting 'A'
+HEX_CASE_ARG, DEC 0 
+DIG_CASE_ARG, DEC 0 
+TEST, DEC 65
+SUM, DEC 0
+CONST_NEG255, DEC -255
+CONST_T, DEC 84
+END

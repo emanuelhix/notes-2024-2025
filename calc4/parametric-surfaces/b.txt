@@ -1,0 +1,21 @@
+LOOP_HUN1, DEC 0
+    LDA NUM1         // Load NUM1
+    ADD N_CONST_100     // Subtract 100
+    STA NUM1
+    CLA
+    CLE  
+    LDA QUOTIENT_1
+    INC
+    SNA              // Skip next instruction if negative 
+    BUN LOOP_HUN1    // Repeat until NUM1 is less than 1000
+    LDA NUM1        //loads new number
+    ADD CONST_100   // adds 100 to remainder 
+    STA NUM1        // Stores remainder
+    CLA
+    LDA QUOTIENT_1 
+    ADD NEGATIVE_ONE
+    STA QUOTIENT_1
+    BUN LOOP_TENS1  //goes to next subroutine
+
+QUOTIENT_1, DEC 0
+NEGATIVE_ONE, DEC -1
