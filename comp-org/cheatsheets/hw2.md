@@ -20,11 +20,6 @@
 
 # Complements
 
-## Why Do We Care About Complements?
-- **Purpose**: The type of complement used to represent a signed number affects the range of values it can represent. This range can be:
-  - **Unbalanced**: Zero may be represented more than once (e.g., negative zero and positive zero).
-  - **Balanced**: Zero is represented only once, but this uses one of the positive values, resulting in a larger negative range.
-
 ## 10's Complement
 - **Example**: Compute the 10's complement of `12390`.
     1. Calculate: `9999 - 12390 = 87609`
@@ -32,12 +27,13 @@
 - **Range**: `-10^(n-1) + 10^(n-1) + 1`, where `n` is the number of digits.
 - **Why +1?**: The largest possible number in a 10's number system with `n` digits is `10^n - 1`. For `n=3`, the number is `999`, or `10^3 - 1 = 999`.
 
-## 2's Complement
+## Subtraction w/ a 2's Complement 
 - **Example**: Compute the 2's complement for `11010 - 10000`.
     1. **Find the 2's Complement of `10000`**:
-        - Subtract `10000` from `11111`: `11111 - 10000 = 01111` (1's complement)
+        - Subtract `10000` from `11111`: `11111 - 10000 = 01111` (notice that this is 1's complement)
         - Add 1: `01111 + 00001 = 10000`
     2. **Add Result to Minuend**: `11010 + 10000 = 1[01010] = 01010` (discard carry)
+- **Why?**: Using two's complement to handle subtraction simplifies the process by allowing us to use just addition operations. This is particularly useful for making hardware design simpler. In fact, in a future lab, we’ll see how we can perform both addition and subtraction using only adder chips. The general goal in hardware design is to simplify as much as possible to reduce factors like weight, cost (including energy and money), and size. When evaluating different solutions, always consider how they align with this principle of simplification.
 
 # Code Conversions
 
@@ -76,13 +72,19 @@
 
 ## Two's Complement of Decimal
 1. Convert the number to binary.
-2. If the number is positive, leave it as is.
-3. If the number is negative:
-    - Subtract it from `2^n` (e.g., `2^3 = 8`, so `8 - abs(number)`).
+2. If the result is positive, leave it as is.
+3. If the result is negative:
+    - Subtract it from `2^n-1`, where `n` is the number of digits in the result.
+    <small>*Suppose our number is `010`. Then, `2^(3)-1=7`=>(`111`). So the operation is `111-010=101`*</small>
     - Add 1 to the result.
-
+     <small>*Continuing the previous example, we'd then do `101+1=110`. Thus, the 2's complement of `010` is `110`.</small>* 
 ## Limitations of Two's Complement
-- **Range Example**: Using 8-bit 2's complement, the range is `-128` to `127`. To represent `137`, 9 bits are needed.
+
+**Range Example**: In an 8-bit two's complement representation, the range of representable values is from `-128` to `127`. This range is due to the fact that one of the 8 bits is used for the sign (positive or negative), leaving 7 bits to represent the magnitude of the number. Consequently, 8 bits can represent a total of \( 2^8 = 256 \) distinct values, but these values are split between negative and positive numbers.
+
+For the number `137`, which falls outside the 8-bit range, you would need more bits to represent it. Specifically, `137` requires 9 bits. In 9-bit two's complement representation, the range of values is from `-256` to `255`, allowing `137` to be represented comfortably.
+
+The reason 8-bit two's complement can only handle numbers up to `127` (for positives) and down to `-128` (for negatives) is because part of the bit space is used for the sign, rather than the magnitude.
 
 ## Detecting Overflow in Two's Complement
 1. **Adding Two Positive Numbers**: Overflow occurs if the result is negative (e.g., both numbers have leading 0s, but result has a leading 1).
@@ -112,7 +114,8 @@
 ## Overflow in Fixed-Point Addition
 - **Condition**: Overflow occurs if the sum exceeds the maximum value representable with the fixed number of bits.
     - **Example**: For format `Qx.Y`, if the result can't be represented with `x` integer bits, overflow has occurred.
---
+
+---
 
 IEEE 754 floating point representation (32 bits <==> "single precision")
 
