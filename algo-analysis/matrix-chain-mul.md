@@ -34,7 +34,7 @@ Given \( \langle A_{1} \rangle \):
 Is considered fully parenthesized.
 
 *The idea here boils down to PEMDAS.*  
-We must first resolve the innermost parentheses before others, and the order of operations within those premises are not ambiguous.
+We must first resolve the innermost parentheses before others, and the order of operations within those parenthesis are not ambiguous.
 
 ##### Ambiguous (Not fully parenthesized)
 
